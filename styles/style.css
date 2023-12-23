@@ -1,5 +1,343 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  min-inline-size: 375px;
+  max-inline-size: 1024px;
+  padding: 20px;
+  margin: auto;
+  /* background-color: var(--bg-color); */
+  background-image: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.header {
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-left: 1px solid var(--button-color);
+  border-bottom: 1px solid var(--button-color);
+  top: 100%;
+  transform: translate(0%, -100%);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid var(--button-color);
+  border-right: 1px solid var(--button-color);
+  left: 100%;
+  transform: translate(-100%, 0%);
+}
+
+.header__theme-menu {
+  justify-self: center;
+}
+
+.header__theme-menu-list {
+  display: grid;
+  grid-template-columns: repeat(3, 71px); /*придумать что-то получше*/
+  justify-items: center;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  background-color: transparent;
+  border: none;
+  color: var(--button-color);
+  padding: 1px 12.5px 4px 12.5px;
+  line-height: 18px;
+  text-transform: lowercase;
+}
+
+.header__theme-menu-button:hover:not(.header__theme-menu-button_active) {
+  cursor: pointer;
+  border: 1px solid var(--button-hover-border-color);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--button-color);
+  pointer-events: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-bottom: 1px solid var(--button-color);
+}
+
+.header__title {
+  position: relative;
+  right: 20px;
+  color: var(--main-title-color);
+  text-shadow: 4px 4px 0px var(--accent-color);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  line-height: 82.5%;
+  margin-top: 273px; /*Наверное костыль*/
+}
+
+.header__caption {
+  margin-top: 115px;
+  margin-bottom: 115px;
+  /* max-inline-size: 491px; */
+  margin-left: 50%;
+  /* max-width: 491px; костыль, придумать тут что-то */
+  justify-self: end;
+}
+
+.title-decor {
+  color: var(--title-color);
+  background-color: var(--accent-color);
+  font-weight: 700;
+  line-height: 23.4px;
+}
+
+.header__decoration {
+  display: var(--header-decoration-display);
+  position: absolute;
+  color: var(--accent-color);
+  line-height: 25px;
+  top: 0;
+  left: 100%;
+  transform: translate(-185%, 0%);
+}
+
+.header__decoration::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  top: 30%;
+  left: 130%;
+  background-color: var(--accent-color);
+  filter: drop-shadow(0px 0px 4px var(--accent-color));
+}
+
+.topic {
+  display: grid;
+  row-gap: 20px;
+  column-gap: 9px;
+  margin-top: 80px;
+}
+
+.topic__list {
+  display: grid;
+  gap: 20px;
+}
+
+.why {
+  grid-template-columns: 1fr 2fr;
+}
+
+.what {
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1fr 2fr;
+}
+
+.what .topic__list {
+  grid-template-columns: repeat(3, 1fr);
+  grid-column: span 2;
+}
+
+.how {
+  grid-template-columns: 1fr 2fr;
+}
+
+.topic__title {
+  color: var(--button-color);
+  font-weight: 700;
+  line-height: 23.4px;
+}
+
+.topic__item-text {
+  color: var(--text-color);
+  line-height: 23.4px;
+}
+
+.topic__item-title {
+  margin-bottom: 10px;
+}
+
+.how .topic__item-title {
+  font-weight: 400;
+}
+
+.topic__item-text__link {
+  display: inline-block;
+  text-decoration: none;
+  text-shadow: 2px 2px 0px var(--accent-color);
+}
+
+.topic__item-text__link:hover {
+  /* border-bottom: 1px solid var(--button-color); */
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.topic__item-text__link:focus-visible {
+  outline: none;
+  border: 1px solid var(--text-color);
+}
+
+.gallery__image-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery__image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  block-size: 100%;
+  inline-size: 100%; 
+}
+
+.gallery__image-item:first-child {
+  grid-column: span 2;
+}
+
+.gallery__image-item:nth-child(2) {
+  grid-row: span 2;
+}
+
+.gallery__image-item:nth-child(3) {
+  grid-row: span 2;
+}
+
+.gallery__image-item:last-child {
+  grid-column: span 2;
+}
+
+.footer {
+  display: grid;
+  grid-template-rows: 76.5vh;
+  /* grid-template-rows: 100vh; */
+  margin-top: 80px;
+}
+/*todo2: адаптив, доработка, чистка кода,
+переписать код на логические свойства где возможно,
+убрать костыли,
+сделать цвета в темах, кнопки и ссылки по макету.
+=Напоминание= - в макете под 1024 дин из gap 25px, но было решено забить на это*/
+.footer__title {
+  margin: auto;
+  color: var(--main-title-color);
+  text-shadow: 2px 2px 0px var(--accent-color);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);;
+  font-weight: 700;
+  line-height: 82.5%;
+}
+
+
+/*todo3: учесть todo2, постараться сделать оптимизацию, особенно в header,
+можно попробовать сделать какие-то размеры на переменных для адаптивов и т.д.*/
+@media (width < 1024px) {
+  .header__theme-menu {
+    justify-self: end;
+    margin-top: 172px;
+  }
+
+  .header__theme-menu-list {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, 26px);
+  }
+
+  .header__title {
+    margin-top: 173px;
+  }
+
+  .header__caption {
+    margin-top: 162px;
+    margin-bottom: 163px;
+  }
+
+  .topic {
+    column-gap: 20px;
+  }
+
+  .what .topic__list {
+    grid-template-columns: auto;
+  }
+
+  .footer {
+    grid-template-rows: 114vh;
+  }
+}
+
+@media (width < 768px) {
+
+  .page {
+    padding: 10px;
+  }
+
+  .header__theme-menu {
+    margin-top: 65px;
+  }
+
+  .header__title {
+    margin-top: 66px;
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    position: initial;
+  }
+
+  .header__caption {
+    margin-top: 56px;
+    margin-bottom: 56px;
+    margin-left: 0;
+    justify-self: start;
+  }
+
+  .topic {
+    margin-top: 50px;
+    grid-template-columns: auto;
+  }
+
+  .what {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    row-gap: 10px;
+  }
+
+  .gallery__image-list {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    gap: 0;
+    row-gap: 10px;
+  }
+
+  .gallery__image-item {
+    grid-row: initial !important;
+    grid-column: initial !important; /*тут спорно, но лучше пока ничего не нашёл*/
+  }
+
+  .footer {
+    margin-top: 50px;
+    grid-template-rows: 74.8vh;
+  }
+
+  .footer__title {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
 }

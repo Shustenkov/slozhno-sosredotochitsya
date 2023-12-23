@@ -19,6 +19,9 @@ h4,
 h5,
 h6,
 p {
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   margin: 0;
 }
 
