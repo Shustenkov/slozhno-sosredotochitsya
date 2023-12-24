@@ -289,7 +289,8 @@
 @media (width < 1024px) {
   .header__theme-menu {
     justify-self: end;
-    margin-top: 172px;
+    margin-top: 50px;
+    align-self: center;
   }
 
   .header__theme-menu-list {
@@ -298,12 +299,16 @@
   }
 
   .header__title {
+    margin-top: 2px;
+    align-self: center;
     /* margin-top: 173px; */
-    margin-top: 50px;
+    /* margin-top: 50px; */
   }
 
   .header__caption {
     margin-top: 115px;
+    /* align-self: center; */
+    /* margin-top: 115px; */
     /* margin-top: 162px; */
     /* margin-bottom: 163px; */
   }
@@ -337,11 +342,11 @@
   }
 
   .header__theme-menu {
-    margin-top: 65px;
+    margin-top: 10px;
   }
 
   .header__title {
-    margin-top: 13px;
+    /* margin-top: 13px; */
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
     position: initial;
   }
