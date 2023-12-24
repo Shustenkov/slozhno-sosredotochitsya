@@ -94,13 +94,14 @@
 
 .header__title {
   position: relative;
+  align-self: center;
   right: 20px;
   color: var(--main-title-color);
   text-shadow: 4px 4px 0px var(--accent-color);
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   line-height: 82.5%;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   /* margin-top: 20px; */
   /* margin-bottom: 100px; */
   /* margin-top: 273px; */
@@ -112,6 +113,7 @@
   /* max-inline-size: 491px; */
   margin-left: 50%;
   /* max-width: 491px; костыль, придумать тут что-то */
+  /* align-self: center; */
   margin-top: 106px;
   justify-self: end;
   block-size: fit-content;
