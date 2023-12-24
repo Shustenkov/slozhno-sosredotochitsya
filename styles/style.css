@@ -1,8 +1,8 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  min-inline-size: 375px;
-  max-inline-size: 1440px;
+  /* min-inline-size: 375px;
+  max-inline-size: 1440px; */
   margin: 0 auto;
   font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
@@ -11,12 +11,13 @@
   min-inline-size: 375px;
   max-inline-size: 1024px;
   padding: 20px;
-  margin: auto;
+  /* margin: auto; */
   /* background-color: var(--bg-color); */
   background-image: var(--bg-image);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  background-color: var(--bg-color);
 }
 
 .header {
@@ -212,7 +213,7 @@
   object-fit: cover;
   object-position: center;
   block-size: 100%;
-  inline-size: 100%; 
+  inline-size: 100%;
 }
 
 .gallery__image-item:first-child {
@@ -248,18 +249,18 @@
   margin: auto;
   color: var(--main-title-color);
   text-shadow: 2px 2px 0px var(--accent-color);
-  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);;
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   line-height: 82.5%;
 }
-
 
 /*todo3: учесть todo2, постараться сделать оптимизацию, особенно в header,
 можно попробовать сделать какие-то размеры на переменных для адаптивов и т.д.*/
 
 @media (width >= 1024px) {
-  .header__title, .footer__title {
-    --accent-color: #FF0070;
+  .header__title,
+  .footer__title {
+    --accent-color: #ff0070;
   }
 }
 
@@ -298,7 +299,6 @@
 }
 
 @media (width < 768px) {
-
   .page {
     padding: 10px;
   }
