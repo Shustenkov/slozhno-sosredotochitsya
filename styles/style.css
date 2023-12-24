@@ -1,6 +1,9 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  min-inline-size: 375px;
+  max-inline-size: 1440px;
+  margin: 0 auto;
   font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -230,15 +233,17 @@
 
 .footer {
   display: grid;
-  grid-template-rows: 76.5vh;
-  /* grid-template-rows: 100vh; */
+  /* grid-template-rows: 76.5vh; */
+  grid-template-rows: 100vh;
   margin-top: 80px;
 }
+
 /*todo2: адаптив, доработка, чистка кода,
 переписать код на логические свойства где возможно,
 убрать костыли,
 сделать цвета в темах, кнопки и ссылки по макету.
 =Напоминание= - в макете под 1024 дин из gap 25px, но было решено забить на это*/
+
 .footer__title {
   margin: auto;
   color: var(--main-title-color);
@@ -251,6 +256,13 @@
 
 /*todo3: учесть todo2, постараться сделать оптимизацию, особенно в header,
 можно попробовать сделать какие-то размеры на переменных для адаптивов и т.д.*/
+
+@media (width >= 1024px) {
+  .header__title, .footer__title {
+    --accent-color: #FF0070;
+  }
+}
+
 @media (width < 1024px) {
   .header__theme-menu {
     justify-self: end;
@@ -280,7 +292,8 @@
   }
 
   .footer {
-    grid-template-rows: 114vh;
+    /* grid-template-rows: 114vh; */
+    grid-template-rows: 100vh;
   }
 }
 
@@ -334,7 +347,8 @@
 
   .footer {
     margin-top: 50px;
-    grid-template-rows: 74.8vh;
+    /* grid-template-rows: 74.8vh; */
+    grid-template-rows: 100vh;
   }
 
   .footer__title {
