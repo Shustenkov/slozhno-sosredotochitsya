@@ -40,9 +40,8 @@
   height: 25px;
   border-left: 1px solid var(--button-color);
   border-bottom: 1px solid var(--button-color);
-  top: calc(
-    100% - var(--page-padding) + 1px
-  ); /*Explanation: 100% - header padding-bottom - 1px*/
+  top: calc(100% - var(--page-padding) + 1px);
+  left: calc(var(--page-padding));
   transform: translate(0%, -100%);
 }
 
@@ -54,7 +53,7 @@
   border-top: 1px solid var(--button-color);
   border-right: 1px solid var(--button-color);
   top: calc(var(--page-padding) + 1px);
-  left: 100%;
+  left: calc(100% - var(--page-padding));
   transform: translate(-100%, 0%);
 }
 
@@ -134,7 +133,7 @@
   color: var(--accent-color);
   line-height: 25px;
   top: calc(var(--page-padding) + 1px);
-  left: 100%;
+  left: calc(100% - var(--page-padding));
   transform: translate(-100%, 0%);
 }
 

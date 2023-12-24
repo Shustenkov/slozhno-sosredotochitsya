@@ -16,6 +16,10 @@ body {
   /* padding: 0 var(--page-padding) 0 var(--page-padding); */
 }
 
+body > * {
+  padding: 0 var(--page-padding) 0 var(--page-padding);
+}
+
 h1,
 h2,
 h3,
