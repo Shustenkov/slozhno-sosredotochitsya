@@ -3,26 +3,30 @@
 .page {
   /* min-inline-size: 375px;
   max-inline-size: 1440px; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
   font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
   font-weight: 400;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
-  min-inline-size: 375px;
+  /* min-inline-size: 375px;
   max-inline-size: 1024px;
-  padding: 20px;
+  padding: 20px; */
   /* margin: auto; */
-  /* background-color: var(--bg-color); */
+  background-color: var(--bg-color);
   background-image: var(--bg-image);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  background-color: var(--bg-color);
 }
 
 .header {
   display: grid;
-  grid-template-rows: repeat(3, min-content);
+  min-block-size: 100vh;
+  grid-template-rows: 2fr 1fr 2fr;
+  /* grid-template-rows: repeat(3, min-content); */
+  padding-top: var(--page-padding);
+  padding-bottom: var(--page-padding);
+  /* grid-template-rows: repeat(3, calc(100vh / 3)); */
 }
 
 .decorated-zone {
@@ -36,7 +40,9 @@
   height: 25px;
   border-left: 1px solid var(--button-color);
   border-bottom: 1px solid var(--button-color);
-  top: 100%;
+  top: calc(
+    100% - var(--page-padding) + 1px
+  ); /*Explanation: 100% - header padding-bottom - 1px*/
   transform: translate(0%, -100%);
 }
 
@@ -47,6 +53,7 @@
   height: 25px;
   border-top: 1px solid var(--button-color);
   border-right: 1px solid var(--button-color);
+  top: calc(var(--page-padding) + 1px);
   left: 100%;
   transform: translate(-100%, 0%);
 }
@@ -94,16 +101,21 @@
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   line-height: 82.5%;
-  margin-top: 273px; /*Наверное костыль*/
+  margin-top: 10px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 100px; */
+  /* margin-top: 273px; */
 }
 
 .header__caption {
-  margin-top: 115px;
-  margin-bottom: 115px;
+  /* margin-top: 51px; */
+  /* margin-top: 115px; */
   /* max-inline-size: 491px; */
   margin-left: 50%;
   /* max-width: 491px; костыль, придумать тут что-то */
+  margin-top: 106px;
   justify-self: end;
+  block-size: fit-content;
 }
 
 .title-decor {
@@ -116,31 +128,39 @@
 .header__decoration {
   display: var(--header-decoration-display);
   position: absolute;
+  align-items: center;
+  gap: 10px;
+  padding-right: 9px;
   color: var(--accent-color);
   line-height: 25px;
-  top: 0;
+  top: calc(var(--page-padding) + 1px);
   left: 100%;
-  transform: translate(-185%, 0%);
+  transform: translate(-100%, 0%);
+}
+
+.header__decoration::before {
+  content: "REC";
 }
 
 .header__decoration::after {
-  position: absolute;
   content: "";
-  display: inline-block;
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  top: 30%;
-  left: 130%;
   background-color: var(--accent-color);
-  filter: drop-shadow(0px 0px 4px var(--accent-color));
+  box-shadow: 0 0 2px 2px var(--accent-color);
+}
+
+.main {
+  margin-top: 60px;
+  display: grid;
+  row-gap: 80px;
 }
 
 .topic {
   display: grid;
   row-gap: 20px;
   column-gap: 9px;
-  margin-top: 80px;
 }
 
 .topic__list {
@@ -235,8 +255,11 @@
 .footer {
   display: grid;
   /* grid-template-rows: 76.5vh; */
-  grid-template-rows: 100vh;
-  margin-top: 80px;
+  /* grid-template-rows: 100vh; */
+  min-block-size: 100vh;
+  margin-top: 60px;
+  padding-top: var(--page-padding);
+  padding-bottom: var(--page-padding);
 }
 
 /*todo2: адаптив, доработка, чистка кода,
@@ -276,12 +299,14 @@
   }
 
   .header__title {
-    margin-top: 173px;
+    /* margin-top: 173px; */
+    margin-top: 50px;
   }
 
   .header__caption {
-    margin-top: 162px;
-    margin-bottom: 163px;
+    margin-top: 115px;
+    /* margin-top: 162px; */
+    /* margin-bottom: 163px; */
   }
 
   .topic {
@@ -294,13 +319,22 @@
 
   .footer {
     /* grid-template-rows: 114vh; */
-    grid-template-rows: 100vh;
+    /* grid-template-rows: 100vh; */
+    min-block-size: 100vh;
   }
 }
 
 @media (width < 768px) {
-  .page {
+  :root {
+    --page-padding: 10px;
+  }
+
+  /* .page {
     padding: 10px;
+  } */
+
+  .header {
+    grid-template-rows: repeat(3, 1fr);
   }
 
   .header__theme-menu {
@@ -308,20 +342,25 @@
   }
 
   .header__title {
-    margin-top: 66px;
+    margin-top: 13px;
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
     position: initial;
   }
 
   .header__caption {
-    margin-top: 56px;
-    margin-bottom: 56px;
+    margin-top: 43px;
+    /* margin-bottom: 56px; */
     margin-left: 0;
     justify-self: start;
   }
 
+  .main {
+    margin-top: 40px;
+    row-gap: 50px;
+  }
+
   .topic {
-    margin-top: 50px;
+    /* margin-top: 40px; */
     grid-template-columns: auto;
   }
 
@@ -346,9 +385,10 @@
   }
 
   .footer {
-    margin-top: 50px;
+    margin-top: 40px;
     /* grid-template-rows: 74.8vh; */
-    grid-template-rows: 100vh;
+    /* grid-template-rows: 100vh; */
+    min-block-size: 100vh;
   }
 
   .footer__title {

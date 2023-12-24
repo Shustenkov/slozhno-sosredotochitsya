@@ -11,5 +11,7 @@
   --main-title-shadow-color: #FF0070;
   --button-color: #FF0070;
   --button-hover-border-color: #FF007066;
-  --header-decoration-display: initial;
+  --header-decoration-display: flex;
+  --bg-color: #000028;
+  --page-padding: 20px;
 }
