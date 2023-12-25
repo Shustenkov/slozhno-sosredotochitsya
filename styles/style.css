@@ -1,5 +1,5 @@
 .page {
-  font-family: "IBM Plex Mono", sans-serif;
+  font-family: var(--page-font);
   font-size: 18px;
   font-weight: 400;
   background-color: var(--bg-color);
@@ -167,6 +167,10 @@
   grid-template-columns: 1fr 2fr;
 }
 
+.how__list-title {
+  margin-bottom: 20px;
+}
+
 .topic__title {
   color: var(--button-color);
   font-weight: 700;
@@ -193,13 +197,12 @@
 }
 
 .topic__item-text__link:hover {
-  text-decoration: underline;
-  text-underline-position: under;
+  border-block-end: 1px solid var(--text-color);
+  margin-block-end: -1px;
 }
 
 .topic__item-text__link:focus-visible {
-  outline: none;
-  border: 1px solid var(--text-color);
+  outline: 1px solid var(--text-color);
 }
 
 .gallery__image-list {

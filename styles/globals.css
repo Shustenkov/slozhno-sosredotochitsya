@@ -22,7 +22,7 @@ h4,
 h5,
 h6,
 p {
-  font-family: "IBM Plex Mono", sans-serif;
+  font-family: var(--page-font);
   font-size: 18px;
   font-weight: 400;
   margin: 0;

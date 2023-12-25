@@ -9,4 +9,5 @@
   --header-decoration-display: flex;
   --bg-color: #000028;
   --page-padding: 20px;
+  --page-font: "IBM Plex Mono", monospace;
 }
