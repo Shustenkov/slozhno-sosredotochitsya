@@ -1,17 +1,7 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* min-inline-size: 375px;
-  max-inline-size: 1440px; */
-  /* margin: 0 auto; */
   font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
   font-weight: 400;
-  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
-  /* min-inline-size: 375px;
-  max-inline-size: 1024px;
-  padding: 20px; */
-  /* margin: auto; */
   background-color: var(--bg-color);
   background-image: var(--bg-image);
   background-position: center;
@@ -20,40 +10,38 @@
 }
 
 .header {
-  display: grid;
-  min-block-size: 100vh;
   grid-template-rows: 2fr 1fr 2fr;
-  /* grid-template-rows: repeat(3, min-content); */
-  padding-top: var(--page-padding);
-  padding-bottom: var(--page-padding);
-  /* grid-template-rows: repeat(3, calc(100vh / 3)); */
 }
 
 .decorated-zone {
+  display: grid;
   position: relative;
+  min-block-size: 100vh;
+  padding-block-start: var(--page-padding);
+  padding-block-end: var(--page-padding);
 }
 
 .decorated-zone::before {
   content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
-  border-left: 1px solid var(--button-color);
-  border-bottom: 1px solid var(--button-color);
-  top: calc(100% - var(--page-padding) + 1px);
-  left: calc(var(--page-padding));
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-start: 1px solid var(--button-color);
+  border-block-end: 1px solid var(--button-color);
+  inset-block-start: calc(100% - var(--page-padding) + 1px);
+  inset-inline-start: calc(var(--page-padding));
   transform: translate(0%, -100%);
 }
 
 .decorated-zone::after {
   content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
-  border-top: 1px solid var(--button-color);
-  border-right: 1px solid var(--button-color);
-  top: calc(var(--page-padding) + 1px);
-  left: calc(100% - var(--page-padding));
+  inline-size: 25px;
+  block-size: 25px;
+  border-block-start: 1px solid var(--button-color);
+  border-inline-end: 1px solid var(--button-color);
+  inset-block-start: calc(var(--page-padding) + 1px);
+  inset-inline-start: calc(100% - var(--page-padding));
   transform: translate(-100%, 0%);
 }
 
@@ -63,7 +51,7 @@
 
 .header__theme-menu-list {
   display: grid;
-  grid-template-columns: repeat(3, 71px); /*придумать что-то получше*/
+  grid-template-columns: repeat(3, 71px);
   justify-items: center;
   gap: 10px;
 }
@@ -72,7 +60,8 @@
   background-color: transparent;
   border: none;
   color: var(--button-color);
-  padding: 1px 12.5px 4px 12.5px;
+  padding-inline: 12.5px;
+  padding-block: 1px 4px;
   line-height: 18px;
   text-transform: lowercase;
 }
@@ -89,32 +78,23 @@
 
 .header__theme-menu-button:focus-visible {
   outline: none;
-  border-bottom: 1px solid var(--button-color);
+  border-block-end: 1px solid var(--button-color);
 }
 
 .header__title {
   position: relative;
   align-self: center;
-  right: 20px;
+  inset-inline-end: 20px;
   color: var(--main-title-color);
   text-shadow: 4px 4px 0px var(--accent-color);
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   line-height: 82.5%;
-  /* margin-top: 10px; */
-  /* margin-top: 20px; */
-  /* margin-bottom: 100px; */
-  /* margin-top: 273px; */
 }
 
 .header__caption {
-  /* margin-top: 51px; */
-  /* margin-top: 115px; */
-  /* max-inline-size: 491px; */
-  margin-left: 50%;
-  /* max-width: 491px; костыль, придумать тут что-то */
-  /* align-self: center; */
-  margin-top: 106px;
+  margin-inline-start: 50%;
+  margin-block-start: 106px;
   justify-self: end;
   block-size: fit-content;
 }
@@ -131,11 +111,11 @@
   position: absolute;
   align-items: center;
   gap: 10px;
-  padding-right: 9px;
+  padding-inline-end: 9px;
   color: var(--accent-color);
   line-height: 25px;
-  top: calc(var(--page-padding) + 1px);
-  left: calc(100% - var(--page-padding));
+  inset-block-start: calc(var(--page-padding) + 1px);
+  inset-inline-start: calc(100% - var(--page-padding));
   transform: translate(-100%, 0%);
 }
 
@@ -145,15 +125,15 @@
 
 .header__decoration::after {
   content: "";
-  width: 9px;
-  height: 9px;
+  inline-size: 9px;
+  block-size: 9px;
   border-radius: 50%;
   background-color: var(--accent-color);
   box-shadow: 0 0 2px 2px var(--accent-color);
 }
 
 .main {
-  margin-top: 60px;
+  margin-block-start: 60px;
   display: grid;
   row-gap: 80px;
 }
@@ -199,7 +179,7 @@
 }
 
 .topic__item-title {
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 .how .topic__item-title {
@@ -213,7 +193,6 @@
 }
 
 .topic__item-text__link:hover {
-  /* border-bottom: 1px solid var(--button-color); */
   text-decoration: underline;
   text-underline-position: under;
 }
@@ -233,8 +212,8 @@
   display: block;
   object-fit: cover;
   object-position: center;
-  block-size: 100%;
   inline-size: 100%;
+  block-size: 100%;
 }
 
 .gallery__image-item:first-child {
@@ -254,20 +233,8 @@
 }
 
 .footer {
-  display: grid;
-  /* grid-template-rows: 76.5vh; */
-  /* grid-template-rows: 100vh; */
-  min-block-size: 100vh;
-  margin-top: 60px;
-  padding-top: var(--page-padding);
-  padding-bottom: var(--page-padding);
+  margin-block-start: 60px;
 }
-
-/*todo2: адаптив, доработка, чистка кода,
-переписать код на логические свойства где возможно,
-убрать костыли,
-сделать цвета в темах, кнопки и ссылки по макету.
-=Напоминание= - в макете под 1024 дин из gap 25px, но было решено забить на это*/
 
 .footer__title {
   margin: auto;
@@ -277,9 +244,6 @@
   font-weight: 700;
   line-height: 82.5%;
 }
-
-/*todo3: учесть todo2, постараться сделать оптимизацию, особенно в header,
-можно попробовать сделать какие-то размеры на переменных для адаптивов и т.д.*/
 
 @media (width >= 1024px) {
   .header__title,
@@ -291,7 +255,7 @@
 @media (width < 1024px) {
   .header__theme-menu {
     justify-self: end;
-    margin-top: 50px;
+    margin-block-start: 50px;
     align-self: center;
   }
 
@@ -301,18 +265,12 @@
   }
 
   .header__title {
-    margin-top: 2px;
+    margin-block-start: 2px;
     align-self: center;
-    /* margin-top: 173px; */
-    /* margin-top: 50px; */
   }
 
   .header__caption {
-    margin-top: 115px;
-    /* align-self: center; */
-    /* margin-top: 115px; */
-    /* margin-top: 162px; */
-    /* margin-bottom: 163px; */
+    margin-block-start: 115px;
   }
 
   .topic {
@@ -324,8 +282,6 @@
   }
 
   .footer {
-    /* grid-template-rows: 114vh; */
-    /* grid-template-rows: 100vh; */
     min-block-size: 100vh;
   }
 }
@@ -335,38 +291,31 @@
     --page-padding: 10px;
   }
 
-  /* .page {
-    padding: 10px;
-  } */
-
   .header {
     grid-template-rows: repeat(3, 1fr);
   }
 
   .header__theme-menu {
-    margin-top: 10px;
+    margin-block-start: 10px;
   }
 
   .header__title {
-    /* margin-top: 13px; */
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
     position: initial;
   }
 
   .header__caption {
-    margin-top: 43px;
-    /* margin-bottom: 56px; */
-    margin-left: 0;
+    margin-block-start: 43px;
+    margin-inline-start: 0;
     justify-self: start;
   }
 
   .main {
-    margin-top: 40px;
+    margin-block-start: 40px;
     row-gap: 50px;
   }
 
   .topic {
-    /* margin-top: 40px; */
     grid-template-columns: auto;
   }
 
@@ -387,13 +336,11 @@
 
   .gallery__image-item {
     grid-row: initial !important;
-    grid-column: initial !important; /*тут спорно, но лучше пока ничего не нашёл*/
+    grid-column: initial !important;
   }
 
   .footer {
-    margin-top: 40px;
-    /* grid-template-rows: 74.8vh; */
-    /* grid-template-rows: 100vh; */
+    margin-block-start: 40px;
     min-block-size: 100vh;
   }
 
